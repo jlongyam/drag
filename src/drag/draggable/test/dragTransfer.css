@@ -1,0 +1,37 @@
+@import "../../../../lib/native-style.css";
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 2.5%;
+}
+
+#drag_area {
+  height: 100%;
+  border: 2px solid #c4c4c4;
+  padding: 5%;
+  display: flex;
+
+}
+.drop-area {
+  border: 2px solid #c4c4c4;
+  padding: 5%;
+  height: 100%;
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.drop-area:first-child {
+  border-right: 0;
+}
+[draggable] {
+  display: block;
+  border: 2px solid #808080;
+  padding: .5em;
+  font-family: monospace;
+  font-size: 1.25em;
+  background-color: #c4c4c4;
+  color: #000000;
+  margin-bottom: .5em;
+}

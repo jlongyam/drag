@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: dragTransfer</title>
+  <link rel="stylesheet" href="dragTransfer.css">
+  <script src="../draggAble.js"></script>
+  <script src="../../../../lib/cssProperty.min.js"></script>
+</head>
+
+<body>
+  <div id="drag_area">
+    <div class="drop-area">
+      <div draggable="true">drag item 1</div>
+      <div draggable="true">drag item 5</div>
+    </div>
+    <div class="drop-area">
+      <div draggable="true">drag item 2</div>
+      <div draggable="true">drag item 3</div>
+      <div draggable="true">drag item 4</div>
+    </div>
+  </div>
+  <script>
+    let el_draggable = document.querySelectorAll('[draggable]')
+    let target_item = false
+    let target_area = false
+    el_draggable.forEach(el => {
+      draggAble(drag_area, el, {
+        dragover: (e) => {
+          if(e.target.getAttribute('class')!= null && e.target.classList.contains('drop-area')) target_area = e.target
+        },
+        drop: (e) => {
+          if (target_area) {
+            target_area.appendChild(target_item)
+          }
+        },
+        dragstart: (e)=> {
+          target_item = e.target
+        }
+      })
+    })
+  </script>
+</body>

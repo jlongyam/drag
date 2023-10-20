@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: dragMove</title>
+  <link rel="stylesheet" href="dragMove.css">
+  <script src="../dragMouse.js"></script>
+  <script src="../../../../lib/cssProperty.min.js"></script>
+</head>
+
+<body>
+  <div id="drag_area">
+    <div id="drag_item" draggable="true">DRAG</div>
+  </div>
+  <script>
+    dragMouse(drag_area, drag_item)
+  </script>
+</body>
