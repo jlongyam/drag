@@ -1,4 +1,4 @@
 # [stream](https://github.com/jlongyam/stream)
 
 - [OK] pure draggable using visibility
-- [OK] draggablw with mouse event
+- [OK] draggable with mouse event
