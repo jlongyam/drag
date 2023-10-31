@@ -7,8 +7,11 @@ Javascript __drag__ libary
 
 See `src/test/` for usage example
 
+[Demo](https://jlongyam.github.io/drag/src/test/index.html)
+
 ## Roadmap
 
+- [OK] limited moving area to scope
 - [OK] drag sort children
 - [OK] drag touch
 - [OK] pure draggable using visibility
