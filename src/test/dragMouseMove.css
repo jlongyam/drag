@@ -23,4 +23,5 @@ body {
   color: #000000;
   left: 100px;
   top: 100px;
+  cursor: default;
 }
