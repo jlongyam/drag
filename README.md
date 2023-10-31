@@ -1,19 +1,25 @@
-# [stream](https://github.com/jlongyam/drag)
+# [drag](https://github.com/jlongyam/drag)
 
-## Functions
+Javascript __drag__ libary
 
-- draggAble
-- dragMouse
+- size only __3KB__ uncompressed.
+- tldr;
 
-## Installation
-
-- object scope and all parent  should have specifix 'height'
-- object drag should have attribute 'draggabe=true'
-- object drag shoud 'position: fixed'
-
-[Changelog](build/changelog.md)
+See `src/test/` for usage example
 
 ## Roadmap
 
+- [OK] drag sort children
+- [OK] drag touch
 - [OK] pure draggable using visibility
 - [OK] draggable with mouse event
+
+## Similiar project
+
+- [westerovs](https://westerovs.github.io/touch-drag-and-drop/)
+- [interact](https://interactjs.io)
+- and many more
+
+[Changelog](changelog.md)
+
+[MIT](LICENSE)
