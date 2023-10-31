@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
   <title>test: drag transfer</title>
-  <link rel="stylesheet" href="draggAbleTransfer.css">
+  <link rel="stylesheet" href="dragTransfer.css">
   <script src="../drag.js"></script>
 </head>
 
@@ -26,7 +26,7 @@
     let target_item = false
     let target_area = false
     el_draggable.forEach(el => {
-      draggAble(drag_area, el, {
+      drag(drag_area, el, {
         dragover: (e) => {
           if(e.target.getAttribute('class')!= null && e.target.classList.contains('drop-area')) target_area = e.target
         },

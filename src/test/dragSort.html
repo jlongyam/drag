@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: drag sort</title>
+  <link rel="stylesheet" href="dragTransfer.css">
+  <script src="../drag.js"></script>
+</head>
+
+<body>
+  <pre id="pre"></pre>
+  <div id="drag_area">
+    <div class="drop-area">
+      <div draggable="true">drag item 1</div>
+      <div draggable="true">drag item 5</div>
+      <div draggable="true">drag item 2</div>
+      <div draggable="true">drag item 3</div>
+      <div draggable="true">drag item 4</div>
+    </div>
+    <div class="drop-template drop-hide"></div>
+  </div>
+  <script>
+    let el_draggable = document.querySelectorAll('[draggable]')
+    let target_item = false
+    let target_enter = false
+    let target_area = false
+    let target_template = document.querySelector('.drop-template')
+    let style_top = 0
+    el_draggable.forEach(el => {
+      drag(drag_area, el, {
+        dragover: (e) => {
+          if (e.target.getAttribute('class') != null && e.target.classList.contains('drop-area')) target_area = e.target
+        },
+        dragenter: (e) => {
+          if (e.toElement.getAttribute('draggable') != null) {
+            target_enter = e.toElement
+            if (target_enter !== target_item) {
+              if (e.clientY > style_top) {
+                target_enter.parentElement.insertBefore(target_template, target_enter.nextElementSibling)
+              }
+              else {
+                target_enter.parentElement.insertBefore(target_template, target_enter )
+              }
+              target_template.classList.remove('drop-hide')
+              target_item.classList.add('drop-hide')
+            }
+          }
+        },
+        drop: (e) => {
+          if (target_area) {
+            if (e.clientY > style_top) {
+              target_area.insertBefore(target_item, target_enter.nextElementSibling)
+            }
+            else {
+              target_area.insertBefore(target_template, target_enter)
+            }
+            target_template.classList.add('drop-hide')
+            target_item.classList.remove('drop-hide')
+          }
+        },
+        dragstart: (e) => {
+          target_item = e.target
+          style_top = e.clientY
+        }
+      })
+    })
+  </script>
+</body>

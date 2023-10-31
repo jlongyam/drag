@@ -1,17 +1,8 @@
 @import "../../lib/native-style.css";
-
-body {
-  height: 100%;
-  margin: 0;
-  padding: 2.5%;
-}
+@import "./dragMove.css";
 
 #drag_area {
-  height: 100%;
-  border: 2px solid #c4c4c4;
-  padding: 5%;
   display: flex;
-
 }
 .drop-area {
   border: 2px solid #c4c4c4;
@@ -25,7 +16,8 @@ body {
 .drop-area:first-child {
   border-right: 0;
 }
-[draggable] {
+[draggable],
+.drop-template {
   display: block;
   border: 2px solid #808080;
   padding: .5em;
@@ -34,4 +26,14 @@ body {
   background-color: #c4c4c4;
   color: #000000;
   margin-bottom: .5em;
+}
+.drop-template {
+  background-color: whitesmoke;
+  border-style: dashed;
+}
+.drop-template::before {
+  content: '\00a0';
+}
+.drop-hide {
+  display: none;
 }

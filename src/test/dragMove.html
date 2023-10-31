@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: drag move</title>
+  <link rel="stylesheet" href="dragMove.css">
+  <script src="../drag.js"></script>
+</head>
+
+<body>
+  <div id="drag_area" draggable="true">
+    <!-- draggable attribute only for 'drag' event only,
+      not necessary for for 'mouse' and 'touch' event -->
+    <div id="drag_item">DRAG</div>
+  </div>
+  <script>
+    dragMove(drag_area, drag_item)
+  </script>
+</body>
