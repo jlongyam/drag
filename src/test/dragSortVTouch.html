@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <title>test: drag touch sort vertical</title>
+  <link rel="stylesheet" href="../../lib/native-style.css">
+  <link rel="stylesheet" href="./dragTransfer.css">
+  <script src="../../lib/cssProperty.js"></script>
+  <script src="../drag.js"></script>
+</head>
+
+<body>
+  <pre id="pre"></pre>
+  
+  <div id="drag_area" style="background-color: bisque;">
+    <div class="drop-area" style="background-color: #cddc39;">
+      <div draggable="true">drag item 1</div>
+      <div draggable="true">drag item 5</div>
+      <div draggable="true">drag item 2</div>
+      <div draggable="true">drag item 3</div>
+      <div draggable="true">drag item 4</div>
+    </div>
+  </div>
+  <div class="drop-template drop-hide"></div>
+  <style>
+    [draggable] {
+      width: 100%;
+    }
+    .drop-area {
+      padding: 0;
+    }
+  </style>
+  <script>
+    let
+      pre = document.getElementById('pre'),
+      drag_area = document.querySelector('#drag_area'),
+      el_draggable = document.querySelectorAll('[draggable]'),
+      target_template = document.querySelector('.drop-template'),
+      target_area = undefined,
+      target_item = undefined,
+      target_enter = undefined,
+      style_top = 0
+      ;
+    el_draggable.forEach((drag_item) => {
+      dragMove(drag_area, drag_item , 'vertical' )
+    })
+  </script>
+</body>
+
+</html>

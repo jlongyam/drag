@@ -27,7 +27,7 @@ function drag(o_scope, o_drag, cb = {}) {
     if (cb.dragend) cb.dragend(e)
   })
 }
-function dragMove(o_scope, o_drag, cb = {}) {
+function dragMove(o_scope, o_drag, sort = false /*'vertical'|'horizontal'*/, cb = {}) {
   let
     posX = 0,
     posY = 0,
@@ -50,7 +50,22 @@ function dragMove(o_scope, o_drag, cb = {}) {
       right: o_scope.offsetLeft + o_scope.offsetWidth - o_drag.offsetWidth,
       bottom: o_scope.offsetTop + o_scope.offsetHeight - o_drag.offsetHeight
     }
-    if (pointX <= max.left) pointX = max.left
+    if (sort === 'vertical') {
+      let
+        parent = o_drag.parentElement,
+        border_parent = parseInt(cssProperty.get('border-width',parent).replace('px','')),
+        border_o_drag = parseInt(cssProperty.get('border-width',o_drag).replace('px','')) 
+        ;
+      pointX = 0
+      max.top = 0
+      max.bottom = parent.offsetHeight - o_drag.offsetHeight - (border_parent + border_o_drag)
+    }
+    if (sort === 'horizontal') {
+      parent_start = o_scope.children[0]
+      parent_last = o_scope.children[o_scope.children.length-1]
+      max.left = parent_start.offsetLeft
+    }
+    if (pointX <= max.left) max.left
     else if (pointX >= max.right) pointX = max.right
     else {
       if (touch) pointX = touch.clientX - o_scope.offsetLeft
@@ -71,11 +86,16 @@ function dragMove(o_scope, o_drag, cb = {}) {
     posX = e.clientX - o_drag.offsetLeft
     posY = e.clientY - o_drag.offsetTop
     touch = false
+    if (sort) {
+      o_drag.style.position = 'absolute'
+      e.target.style.zIndex = '99'
+    }
     o_scope.addEventListener('mousemove', dragging, false)
     if (cb.mouseDown) cb.mouseDown(e)
   }
   function mouseUp(e) {
     o_scope.removeEventListener('mousemove', dragging, false)
+    e.target.style.zIndex = 'auto'
     if (cb.mouseUp) cb.mouseUp(e)
   }
   function touchMove(e) {

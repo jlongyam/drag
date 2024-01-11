@@ -1,7 +1,8 @@
 @import "../../lib/native-style.css";
 @import "./dragMove.css";
 
-#drag_area {
+#drag_area,
+.drag-area {
   display: flex;
 }
 .drop-area {
@@ -13,10 +14,11 @@
   display: flex;
   flex-direction: column;
 }
-.drop-area:first-child {
-  border-right: 0;
+.drop-area:not(:first-child) {
+  border-left: 0;
 }
 [draggable],
+.drag-item,
 .drop-template {
   display: block;
   border: 2px solid #808080;
